@@ -1,0 +1,15 @@
+email = "boukalli.pro@gmail.com"
+password = "abdou1234567890"
+description = "mouad rak 3iyan hhhhhhhh"
+booktitle = "title"
+firstname = "moad"
+lastname = "publishing"
+keyword1 = "keyword"
+keyword2 = "keyword"
+keyword3 = "keyword"
+keyword4 = "keyword"
+keyword5 = "keyword"
+keyword6 = "keyword"
+keyword7 = "keyword"
+paperback =r'C:\Users\Ju_Eun\Downloads\Telegram Desktop\CollegeRuled_6x9_120_noBleed.pdf'
+cover =r'C:\Users\Ju_Eun\Downloads\Telegram Desktop\My Ramadan Journal (1).pdf'
