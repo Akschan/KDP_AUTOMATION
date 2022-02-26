@@ -1,5 +1,5 @@
-email = "boukalli.pro@gmail.com"
-password = "abdou1234567890"
+email = "testing email"
+password = "testing password"
 description = "mouad rak 3iyan hhhhhhhh"
 booktitle = "title"
 firstname = "moad"
