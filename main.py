@@ -17,6 +17,8 @@ except:
     driver = webdriver.Chrome(service=service)
 
 wait = WebDriverWait(driver, 10)
+longwait = WebDriverWait(driver, 120)
+superlongwait = WebDriverWait(driver,3600)
 driver.get("http://kdp.amazon.com")
 driver.maximize_window()
 
@@ -76,10 +78,34 @@ driver.find_element(by=By.XPATH, value='//*[@id="print-isbn-confirm-button-annou
 
 wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="print-isbn-success-alert"]/div/div')))
 
-driver.find_element(by=By.XPATH, value='//*[@id="a-autoid-1-announce"]').click()
-driver.find_element(by=By.XPATH, value='//*[@id="a-autoid-4-announce"]').click()
-driver.find_element(by=By.XPATH, value='//*[@id="a-autoid-6-announce"]').click()
-
+wait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="trim-size-btn-announce"]')))
+wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="trim-size-btn-announce"]')))
+driver.find_element(by=By.XPATH, value='//*[@id="trim-size-btn-announce"]').click()
+try:
+    if size8_5_11:
+        wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="trim-size-standard-option-1-3-announce"]')))
+        driver.find_element(by=By.XPATH, value='//*[@id="trim-size-standard-option-1-3-announce"]').click()
+    elif size9_8:
+        wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="trim-size-popular-option-0-3-announce"]')))
+        driver.find_element(by=By.XPATH,value='//*[@id="trim-size-popular-option-0-3-announce"]').click()
+except:
+    print("you have to choose size")
+wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="a-autoid-4-announce"]')))
+while not ex:
+    try:
+        driver.find_element(by=By.XPATH, value='//*[@id="a-autoid-4-announce"]').click()
+        ex = True
+    except:
+        pass
+ex = False
+while not ex:
+    try:
+        driver.find_element(by=By.XPATH, value='//*[@id="a-autoid-6-announce"]').click()
+        ex = True
+    except:
+        pass
+ex = False
+time.sleep(1)
 
 wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="data-print-book-publisher-cover-choice-accordion"]/div[2]/div/div[1]/a/i')))
 while not ex:
@@ -90,14 +116,30 @@ while not ex:
         pass
 wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="data-print-book-publisher-cover-file-upload-browse-button-announce"]')))
 driver.find_element(by=By.XPATH, value='//*[@id="data-print-book-publisher-cover-file-upload-AjaxInput"]').send_keys(cover)
-WebDriverWait(driver,120).until(EC.element_to_be_clickable((By.XPATH,'//*[@id="data-print-book-publisher-interior-file-upload-browse-button-announce"]')))
+longwait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="data-print-book-publisher-interior-file-upload-browse-button-announce"]')))
 driver.find_element(by=By.XPATH, value='//*[@id="data-print-book-publisher-interior-file-upload-AjaxInput"]').send_keys(paperback)
-WebDriverWait(driver, 120).until(EC.visibility_of_element_located((By.XPATH,'//*[@id="data-print-book-publisher-interior-file-upload-success"]/div')))
+longwait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="data-print-book-publisher-interior-file-upload-success"]/div')))
 
 
 wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="print-preview-noconfirm-announce"]')))
 driver.find_element(by=By.XPATH, value='//*[@id="print-preview-noconfirm-announce"]').click()
 
+longwait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="issues_by_severity"]/div[2]/h2')))
+superlongwait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="printpreview_approve_button_enabled"]')))
+driver.find_element(by=By.XPATH, value='//*[@id="printpreview_approve_button_enabled"]').click()
+
+longwait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="save-and-continue-announce"]')))
+driver.find_element(by=By.XPATH, value='//*[@id="save-and-continue-announce"]').click()
+
+longwait.until(EC.visibility_of_element_located((By.XPATH,'//*[@id="data-pricing-print-us-price-input"]/input')))
+driver.find_element(by=By.XPATH, value='//*[@id="data-pricing-print-us-price-input"]/input').send_keys(price)
+
+longwait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="data-pricing-print"]/div/div/div[3]/div/div/div[2]/div/div[2]/div/div/div/div/div[1]/span/div')))
+driver.find_element(by=By.XPATH, value='//*[@id="data-pricing-print"]/div/div/div[3]/div/div/div[2]/div/div[2]/div/div/div/div/div[1]/span/div').click()
+
+longwait.until(EC.element_to_be_clickable((By.XPATH,'//*[@id="save-and-publish-announce"]')))
+time.sleep(6)
+driver.find_element(by=By.XPATH, value='//*[@id="save-and-publish-announce"]').click()
 
 
 time.sleep(200)
