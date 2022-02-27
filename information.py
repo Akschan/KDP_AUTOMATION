@@ -1,7 +1,11 @@
-email = "testing email"
-password = "testing password"
+import openpyxl
+email = "boukalli.pro@gmail.com"
+password = "abdou1234567890"
+filespath = r"C:\Users\Ju_Eun\Documents\courses\test\Classeur 2.xlsx"
+file = openpyxl.load_workbook(filespath).active
 description = "mouad rak 3iyan hhhhhhhh"
 booktitle = "title"
+subtitle = "subtitle"
 firstname = "moad"
 lastname = "publishing"
 keyword1 = "keyword"
