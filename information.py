@@ -1,6 +1,6 @@
 import openpyxl
-email = "boukalli.pro@gmail.com"
-password = "abdou1234567890"
+email = "test mail"
+password = "test pass"
 filespath = r"C:\Users\Ju_Eun\Documents\courses\test\Classeur 2.xlsx"
 file = openpyxl.load_workbook(filespath).active
 description = "mouad rak 3iyan hhhhhhhh"
