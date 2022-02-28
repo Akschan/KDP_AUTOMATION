@@ -1,4 +1,11 @@
-from main_file import Kdp_auto
-from information import *
+from Functions import KdpAuto
+from Data import *
 
-Kdp_auto(email,password,description,booktitle,subtitle,firstname,lastname,keyword1,keyword2,keyword3,keyword4,keyword5,keyword6,keyword7,paperback,cover,Width,Height,price)
+
+driver = KdpAuto.getdriver()
+wait = KdpAuto.wait(driver)
+long_wait = KdpAuto.longwait(driver)
+super_long_wait = KdpAuto.superlongwait(driver)
+
+automate = KdpAuto(personalinfos=Personalinfo,bookinfos=Bookinfos,paperback=Paperback,cover=Cover)
+automate.Automation(driver,wait,long_wait,super_long_wait)
