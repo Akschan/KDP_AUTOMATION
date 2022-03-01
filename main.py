@@ -1,11 +1,13 @@
 from Functions import KdpAuto
 from Data import *
+from Functions import Data
+import concurrent.futures
+import threading
+
+data = Data(filepath=books_data_path)
+books = data.two_books()
 
 
-driver = KdpAuto.getdriver()
-wait = KdpAuto.wait(driver)
-long_wait = KdpAuto.longwait(driver)
-super_long_wait = KdpAuto.superlongwait(driver)
-
-automate = KdpAuto(personalinfos=Personalinfo,bookinfos=Bookinfos,paperback=Paperback,cover=Cover)
-automate.Automation(driver,wait,long_wait,super_long_wait)
+def thread(book):
+    driver = KdpAuto.getdriver()
+    KdpAuto(personalinfos=Personalinfo, bookinfos=book, paperback=Paperback, cover=Cover).Automate(driver)
