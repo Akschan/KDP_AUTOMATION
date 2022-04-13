@@ -1,4 +1,4 @@
-Personalinfo = ["boukalli.pro@gmail.com", "abdou1234567890"]
+Personalinfo = ["mail", "pass"]
 books_data_path = r'C:\Users\Ju_Eun\Documents\courses\test\Classeur 2.xlsx'
 keywords = {'keyword', 'keyword', 'keyword', 'keyword', 'keyword', 'keyword', 'keyword'}
 Bookinfos = ['title', 'subtitle', 'moad', 'publishing', r'this book is cool??', keywords, 6, 9, 7.75]
